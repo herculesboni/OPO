@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORO — Инвестиции в AI-инфраструктуру</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #FFFFFF;
+      --black: #1A1A1A;
+      --gray-dark: #404040;
+      --gray-medium: #808080;
+      --gray-light: #E5E5E5;
+      --graphite: #2C2C2C;
+      --accent: #3A3A3A;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+    }
+
+    /* Hero Section с видео */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      opacity: 0.4;
+      filter: grayscale(100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+      padding: 0 20px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .logo-circle {
+      width: 100%;
+      height: 100%;
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 20s linear infinite;
+    }
+
+    .logo-circle::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: 20%;
+      width: 30%;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 400;
+      opacity: 0.7;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+      animation: scroll 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Section */
+    section {
+      padding: clamp(60px, 10vw, 120px) 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--graphite);
+    }
+
+    .section-subtitle {
+      font-size: clamp(16px, 2.5vw, 18px);
+      color: var(--gray-medium);
+      margin-bottom: 60px;
+      max-width: 800px;
+      line-height: 1.7;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    /* Card */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      padding: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--gray-medium);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .card-title {
+      font-size: clamp(20px, 3vw, 24px);
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--graphite);
+      letter-spacing: -0.01em;
+    }
+
+    .card-content {
+      font-size: 15px;
+      color: var(--gray-dark);
+      line-height: 1.8;
+    }
+
+    .card-content p {
+      margin-bottom: 16px;
+    }
+
+    .card-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-content li {
+      padding-left: 24px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .card-content li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gray-medium);
+    }
+
+    /* Numbers */
+    .number-large {
+      font-size: clamp(40px, 6vw, 60px);
+      font-weight: 300;
+      color: var(--graphite);
+      margin: 20px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .number-medium {
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 300;
+      color: var(--graphite);
+      margin: 16px 0;
+    }
+
+    /* Highlight */
+    .highlight {
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--gray-light);
+      margin: 32px 0;
+    }
+
+    /* Mini Card */
+    .mini-card {
+      background: #FAFAFA;
+      border: 1px solid var(--gray-light);
+      padding: 24px;
+      margin: 16px 0;
+    }
+
+    .mini-card-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--graphite);
+    }
+
+    .mini-card-content {
+      font-size: 14px;
+      color: var(--gray-dark);
+      line-height: 1.6;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    th {
+      font-weight: 500;
+      color: var(--graphite);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      color: var(--gray-dark);
+      font-size: 15px;
+    }
+
+    tr:hover {
+      background: #FAFAFA;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--graphite);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 300;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-section p {
+      font-size: clamp(16px, 2.5vw, 18px);
+      opacity: 0.9;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--white);
+      color: var(--graphite);
+      padding: 18px 48px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-button:hover {
+      background: var(--gray-light);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--gray-medium);
+      font-size: 14px;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        height: 80vh;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .grid, .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content {
+        padding: 0 16px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      th, td {
+        padding: 12px 8px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="/mnt/user-data/uploads/hf_20260204_085459_562cd94e-67ea-4df8-b6a5-6c7885b8e1aa.mp4" type="video/mp4">
+  </video>
+  
+  <div class="hero-content">
+    <div class="logo">
+      <div class="logo-circle"></div>
+    </div>
+    <h1>ORO</h1>
+    <p class="hero-subtitle">Инвестиции в AI-инфраструктуру</p>
+    <p class="hero-tagline">
+      Системы, которые замыкают данные в самоподдерживающийся цикл решений
+    </p>
+  </div>
+  
+  <div class="scroll-indicator"></div>
+</section>
+
+<!-- Основная идея -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Основная концепция</h2>
+    <p class="section-subtitle">
+      Проект представляет собой модель привлечения капитала для создания и эксплуатации 
+      AI-инфраструктуры. Это не венчурная доля, не токенизация, не обещания будущей капитализации.
+    </p>
+
+    <div class="card">
+      <h3 class="card-title">Логика простая</h3>
+      <div class="card-content">
+        <p>
+          Капитал превращается в работающий актив — вычислительные мощности на GPU. 
+          Актив генерирует денежный поток через внедрения AI-систем в компании. 
+          Поток обеспечивает возврат займа с процентами.
+        </p>
+        <div class="divider"></div>
+        <p class="highlight">
+          Ключевое отличие: возврат не зависит от роста оценки проекта, 
+          а формируется из реальных контрактов на внедрение.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Параметры -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Параметры финансирования</h2>
+    
+    <div class="grid">
+      <div class="card">
+        <h3 class="card-title">Сумма</h3>
+        <div class="number-large">400,000 ₽</div>
+        <div class="card-content">
+          <p>Форма: прямое финансирование проекта (займ, не доля)</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Условия</h3>
+        <div class="card-content">
+          <ul>
+            <li>Ставка: 20% годовых</li>
+            <li>Срок: до 24 месяцев</li>
+            <li>Залог: GPU RTX 5090 (350,000 ₽)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Гарантии</h3>
+        <div class="card-content">
+          <p>
+            Инвестор не входит в операционное управление и не несёт дополнительных обязательств. 
+            Все риски ограничены объёмом вложенных средств.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Почему AI-внедрения -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Почему AI-внедрения сейчас</h2>
+    <p class="section-subtitle">
+      Компании массово переходят от экспериментов к практическому использованию AI. 
+      Это создаёт устойчивый спрос на реальную инфраструктуру и внедрение.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3 class="card-title">Автоматизация процессов</h3>
+        <div class="card-content">
+          <p>Снижение времени на рутинные задачи до 75%. Экономия ресурсов персонала.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Ускорение аналитики</h3>
+        <div class="card-content">
+          <p>Обработка больших объёмов данных за минуты вместо часов. Быстрые решения.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Снижение нагрузки</h3>
+        <div class="card-content">
+          <p>Освобождение специалистов от монотонной работы. Фокус на сложных задачах.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Финансовая модель -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Финансовая модель</h2>
+    <p class="section-subtitle">
+      Консервативный сценарий построен на поиске 2 клиентов за 2 года. 
+      Это реалистичная задача для работы через личные связи и B2B продажи.
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 class="card-title">Доходы (2 года)</h3>
+        <div class="number-medium">1,400,000 ₽</div>
+        <div class="card-content">
+          <div class="mini-card">
+            <div class="mini-card-title">Клиент 1</div>
+            <div class="mini-card-content">Внедрение: 700,000 ₽<br>Поддержка: 100,000 ₽</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-title">Клиент 2</div>
+            <div class="mini-card-content">Внедрение: 500,000 ₽<br>Поддержка: 100,000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Расходы (2 года)</h3>
+        <div class="number-medium">1,400,000 ₽</div>
+        <div class="card-content">
+          <ul>
+            <li>Возврат инвестору: 480,000 ₽</li>
+            <li>GPU (2 шт): 400,000 ₽</li>
+            <li>Операционные: 300,000 ₽</li>
+            <li>Резерв: 220,000 ₽</li>
+          </ul>
+          <div class="divider"></div>
+          <p class="highlight">Результат: break-even. Возврат инвестору обеспечен.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- График выплат -->
+<section>
+  <div class="container">
+    <h2 class="section-title">График выплат</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Срок возврата</th>
+          <th>Тело</th>
+          <th>Проценты</th>
+          <th>Итого</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12 месяцев</td>
+          <td>400,000 ₽</td>
+          <td>80,000 ₽</td>
+          <td><strong>480,000 ₽</strong></td>
+        </tr>
+        <tr>
+          <td>24 месяца</td>
+          <td>400,000 ₽</td>
+          <td>176,000 ₽</td>
+          <td><strong>576,000 ₽</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="color: var(--gray-medium); font-size: 14px; margin-top: 16px;">
+      Квартал 1-8: выплаты по мере контрактов. Досрочный возврат возможен после года, но не гарантирован.
+    </p>
+  </div>
+</section>
+
+<!-- Сценарии -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Сценарии развития</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 class="card-title">Worst Case</h3>
+        <div class="card-content">
+          <p><strong>Если проект не выходит на денежный поток:</strong></p>
+          <ul>
+            <li>Продажа GPU: 300,000 ₽</li>
+            <li>Резерв: 50,000 ₽</li>
+            <li>Личные средства: 50,000 ₽</li>
+          </ul>
+          <div class="divider"></div>
+          <div class="number-medium">400,000 ₽</div>
+          <p>Вы получаете тело без процентов. Наша потеря: 50K + время.</p>
+          <p style="color: var(--gray-medium); font-size: 14px; margin-top: 16px;">
+            Вероятность: 15-20%
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Best Case</h3>
+        <div class="card-content">
+          <p><strong>Если всё идет отлично:</strong></p>
+          <ul>
+            <li>Возврат через 12 месяцев</li>
+            <li>Тело: 400,000 ₽</li>
+            <li>Проценты: 80,000 ₽</li>
+            <li>Бонус за досрочность: 50,000 ₽</li>
+          </ul>
+          <div class="divider"></div>
+          <div class="number-medium">530,000 ₽</div>
+          <p>ROI: 32.5% годовых. Возможность повторного входа (800K).</p>
+          <p style="color: var(--gray-medium); font-size: 14px; margin-top: 16px;">
+            Вероятность: 30-40%
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Фазы развития -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Фазы развития</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3 class="card-title">Фаза 1: Месяцы 1-3</h3>
+        <div class="card-content">
+          <ul>
+            <li>Получение инвестиций</li>
+            <li>Покупка GPU</li>
+            <li>Обучение ML/AI</li>
+            <li>Поиск клиентов</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Фаза 2: Месяцы 4-10</h3>
+        <div class="card-content">
+          <ul>
+            <li>Разработка MVP</li>
+            <li>Внедрение у первого клиента</li>
+            <li>Получение оплаты</li>
+            <li>Возможен частичный возврат</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Фаза 3: Месяцы 10-12</h3>
+        <div class="card-content">
+          <ul>
+            <li>Второй клиент</li>
+            <li>Стандартизация процессов</li>
+            <li>Возможен break-even</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Фаза 4: Годы 2-4</h3>
+        <div class="card-content">
+          <ul>
+            <li>15 клиентов total</li>
+            <li>Прибыль: ~2M/год</li>
+            <li>Самоокупаемость</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Риски -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Ключевые риски</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Риск</th>
+          <th>Вероятность</th>
+          <th>Митигация</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Клиент не платит</td>
+          <td>Низкая</td>
+          <td>Аванс 30% покрывает GPU</td>
+        </tr>
+        <tr>
+          <td>Проект затягивается</td>
+          <td>Средняя</td>
+          <td>Резерв 220K на доп. время</td>
+        </tr>
+        <tr>
+          <td>Не найдем клиентов</td>
+          <td>Средняя</td>
+          <td>Продать GPU + резерв = возврат тела</td>
+        </tr>
+        <tr>
+          <td>AI-рынок упадет</td>
+          <td>Низкая</td>
+          <td>GPU сохраняет 70-85% стоимости</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="color: var(--gray-medium); font-size: 14px; margin-top: 24px;">
+      Модель изначально не строится на оптимистичных допущениях, 
+      что снижает вероятность критического сценария.
+    </p>
+  </div>
+</section>
+
+<!-- Источники -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Источники рыночных данных</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3 class="card-title">Grand View Research</h3>
+        <div class="card-content">
+          <p>AI Market Size Report 2024-2030</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Gartner</h3>
+        <div class="card-content">
+          <p>Top Strategic Technology Trends 2024</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">McKinsey</h3>
+        <div class="card-content">
+          <p>The State of AI in 2024</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">IDC</h3>
+        <div class="card-content">
+          <p>Worldwide AI Spending Guide</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="color: var(--gray-medium); font-size: 14px; margin-top: 40px;">
+      Все прогнозы основаны на открытых отчетах аналитических компаний. 
+      Финансовая модель построена консервативно.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Готовы обсудить</h2>
+  <p>
+    Предложение действительно до 20.02.2026.<br>
+    Ограниченное количество инвесторов.
+  </p>
+  <a href="#" class="cta-button" onclick="event.preventDefault(); alert('Контакты:\n+7 XXX XXX-XX-XX\n@telegram');">
+    Связаться с основателем
+  </a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>
+    ORO — системы, которые замыкают данные в самоподдерживающийся цикл решений
+  </p>
+  <p style="margin-top: 16px; opacity: 0.7;">
+    Материал носит информационный характер и не является публичной офертой. Февраль 2026.
+  </p>
+</footer>
+
+</body>
+</html>
