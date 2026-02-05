@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OPO — Инвестиции в AI-инфраструктуру</title>
+  <title>RERAZUM — Инвестиции в AI-инфраструктуру</title>
   <style>
     * {
       margin: 0;
@@ -480,6 +480,17 @@
       text-decoration: none;
       display: block;
       color: inherit;
+      position: relative;
+    }
+
+    .source-card::after {
+      content: '→';
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 20px;
+      opacity: 0;
+      transition: all 0.3s ease;
     }
 
     body.dark-mode .source-card {
@@ -493,6 +504,11 @@
       transform: translateY(-4px);
     }
 
+    .source-card:hover::after {
+      opacity: 1;
+      right: 20px;
+    }
+
     body.dark-mode .source-card:hover {
       box-shadow: 0 8px 24px rgba(255,255,255,0.1);
     }
@@ -502,6 +518,13 @@
       font-weight: 500;
       margin-bottom: 12px;
       color: var(--graphite);
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      transition: text-decoration-color 0.3s ease;
+    }
+
+    .source-card:hover h3 {
+      text-decoration-color: currentColor;
     }
 
     body.dark-mode .source-card h3 {
@@ -662,19 +685,22 @@
   <video autoplay muted playsinline>
     <source src="opimovie.mp4" type="video/mp4">
   </video>
+  <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 10;">
+    <h1 style="font-size: clamp(80px, 15vw, 200px); font-weight: 300; letter-spacing: 0.3em; color: white; text-align: center; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">RERAZUM</h1>
+  </div>
   <button class="skip-btn" onclick="skipVideo()">ПРОПУСТИТЬ</button>
 </div>
 
 <!-- Dark Mode Toggle -->
 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">
-  <span id="theme-icon">☀️</span>
+  <span id="theme-icon">◐</span>
 </button>
 
 <!-- LOGO SCREEN -->
 <section class="logo-section">
   <div class="logo">
     <div class="logo-circle"></div>
-    <div class="logo-text">OPO</div>
+    <div class="logo-text">RERAZUM</div>
   </div>
 </section>
 
@@ -683,16 +709,16 @@
   <div class="container">
     <h2>Основная идея</h2>
     <p class="section-subtitle">
-      OPO — это модель инвестиций в вычислительную инфраструктуру для внедрения AI-систем.
+      RERAZUM — это модель инвестиций в вычислительную инфраструктуру для внедрения AI-систем.
       Капитал превращается в работающий актив и возвращается через реальные контракты.
     </p>
   </div>
 </section>
 
-<!-- Почему OPO -->
+<!-- Почему RERAZUM -->
 <section>
   <div class="container">
-    <h2>Почему OPO</h2>
+    <h2>Почему RERAZUM</h2>
     <div class="why-grid">
       <div class="why-card">
         <h3>Контракты, а не обещания</h3>
@@ -707,6 +733,82 @@
       <div class="why-card">
         <h3>Контроль рисков</h3>
         <p>Модель изначально построена без зависимости от роста оценки</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Преимущества бизнес-модели -->
+<section>
+  <div class="container">
+    <h2>Преимущества бизнес-модели</h2>
+    <p class="section-subtitle">
+      Выручка формируется за счет комиссий за внедрение AI-систем и их дальнейшее обслуживание. 
+      RERAZUM взимает единовременную комиссию в размере 5% за внедрение, 1% ежегодно за техподдержку и консультации, 
+      а также 5% от стоимости при масштабировании системы.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3 class="card-title">Регулярная выручка</h3>
+        <div class="card-content">
+          <p>
+            После внедрения AI-системы компания начинает получать регулярную комиссию за обслуживание, 
+            которая не подвержена колебаниям и стабильна во времени.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Долгосрочные контракты</h3>
+        <div class="card-content">
+          <p>
+            Стратегия — долгосрочное сопровождение клиентов без необходимости постоянного поиска новых проектов. 
+            Это означает бесконечное получение комиссии за поддержку и рост выручки при каждом новом внедрении.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Низкий отток клиентов</h3>
+        <div class="card-content">
+          <p>
+            AI-системы становятся неотъемлемой частью бизнеса клиента. 
+            Отказаться от них — значит потерять автоматизацию и эффективность, 
+            поэтому регулярная выручка будет только расти.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Asset-light модель</h3>
+        <div class="card-content">
+          <p>
+            AI-бизнес не требует существенного капитала для масштабирования. 
+            Основные активы — команда, экспертиза и технологии, 
+            поэтому рост возможен без постоянных инвестиций.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Высокая маржинальность</h3>
+        <div class="card-content">
+          <p>
+            Основная статья расходов — заработная плата персонала, которая не зависит от размера проектов. 
+            По мере роста бизнеса маржинальность увеличивается за счет более крупных контрактов при тех же издержках.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Привлекательность для стратегов</h3>
+        <div class="card-content">
+          <p>
+            Бизнес RERAZUM может быть привлекательным приобретением для крупных IT-компаний: 
+            клиентская база и экспертиза создают синергию для корпораций, развивающих AI-направления.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -1059,7 +1161,7 @@
 
 <!-- Footer -->
 <footer>
-  <p>OPO — AI Infrastructure · 2026</p>
+  <p>RERAZUM — AI Infrastructure · 2026</p>
 </footer>
 
 <script>
@@ -1081,7 +1183,7 @@
   function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const icon = document.getElementById('theme-icon');
-    icon.textContent = document.body.classList.contains('dark-mode') ? '🌙' : '☀️';
+    icon.textContent = document.body.classList.contains('dark-mode') ? '◑' : '◐';
     localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
   }
 
@@ -1090,7 +1192,7 @@
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       document.body.classList.add('dark-mode');
-      document.getElementById('theme-icon').textContent = '🌙';
+      document.getElementById('theme-icon').textContent = '◑';
     }
   });
 </script>
