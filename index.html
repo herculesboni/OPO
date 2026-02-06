@@ -53,6 +53,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0.3;
     }
 
     .skip-btn {
@@ -68,11 +69,24 @@
       box-shadow: var(--shadow);
       transition: all 0.3s ease;
       z-index: 10000;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0);
+      }
     }
 
     .skip-btn:hover {
       background: rgba(255,255,255,1);
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.05);
+      animation: none;
     }
 
     /* Dark Mode Toggle */
@@ -105,12 +119,17 @@
       color: var(--white);
     }
 
-    /* LOGO SECTION */
+    /* LOGO SECTION - Album Style Loading */
     .logo-section {
-      padding: 120px 20px;
+      padding: 60px 20px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .logo-section .falling-letters {
@@ -126,10 +145,18 @@
       color: rgba(255, 255, 255, 0.15);
     }
 
+    .loading-title {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      margin-bottom: 40px;
+      opacity: 0.7;
+    }
+
     .logo {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto;
+      width: clamp(120px, 25vw, 160px);
+      height: clamp(120px, 25vw, 160px);
+      margin: 0 auto 20px;
       position: relative;
     }
 
@@ -161,9 +188,73 @@
     }
 
     .logo-text {
-      font-size: 36px;
+      font-size: clamp(28px, 6vw, 36px);
       font-weight: 300;
       letter-spacing: .2em;
+      margin-bottom: 60px;
+    }
+
+    .loading-content {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .loading-content h3 {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .loading-content p {
+      font-size: clamp(15px, 2.5vw, 17px);
+      line-height: 1.8;
+      color: var(--gray-dark);
+      margin-bottom: 40px;
+    }
+
+    body.dark-mode .loading-content p {
+      color: var(--gray-light);
+    }
+
+    .continue-btn {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--graphite);
+      color: var(--white);
+      border: 2px solid var(--graphite);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .continue-btn:hover {
+      background: transparent;
+      color: var(--graphite);
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode .continue-btn {
+      background: var(--white);
+      color: var(--graphite);
+      border-color: var(--white);
+    }
+
+    body.dark-mode .continue-btn:hover {
+      background: transparent;
+      color: var(--white);
+    }
+
+    .swipe-hint {
+      margin-top: 30px;
+      font-size: 12px;
+      opacity: 0.5;
+      letter-spacing: 0.05em;
     }
 
     @keyframes spin {
@@ -692,12 +783,12 @@
     /* Responsive */
     @media (max-width: 768px) {
       .logo {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
       }
 
       .logo-text {
-        font-size: 28px;
+        font-size: 24px;
       }
 
       .grid, .grid-2, .why-grid {
@@ -732,7 +823,15 @@
       }
 
       .logo-section {
-        padding: 80px 16px;
+        padding: 40px 16px;
+      }
+
+      .letter {
+        font-size: 20px !important;
+      }
+
+      .falling-letters .letter:nth-child(n+30) {
+        display: none;
       }
     }
 
@@ -752,6 +851,22 @@
 
       .source-card {
         padding: 20px;
+      }
+
+      .skip-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 20px;
+        font-size: 11px;
+      }
+
+      .letter {
+        font-size: 16px !important;
+      }
+
+      .continue-btn {
+        padding: 14px 32px;
+        font-size: 12px;
       }
     }
   </style>
@@ -819,8 +934,8 @@
   <span id="theme-icon">◐</span>
 </button>
 
-<!-- LOGO SCREEN -->
-<section class="logo-section">
+<!-- LOGO SCREEN - Album Style Loading -->
+<section class="logo-section" id="loading-section">
   <!-- Falling letters background -->
   <div class="falling-letters">
     <div class="letter">R</div>
@@ -866,21 +981,23 @@
   </div>
   
   <div style="position: relative; z-index: 10;">
+    <p class="loading-title">ПОКА ИДЕТ ЗАГРУЗКА, ДАВАЙТЕ РАССКАЖЕМ ОБ ОСНОВНОЙ ИДЕЕ</p>
+    
     <div class="logo">
       <div class="logo-circle"></div>
     </div>
-    <div class="logo-text" style="position: static; margin-top: 40px;">RERAZUM</div>
-  </div>
-</section>
-
-<!-- Основная идея -->
-<section>
-  <div class="container">
-    <h2>Основная идея</h2>
-    <p class="section-subtitle">
-      RERAZUM — это модель инвестиций в вычислительную инфраструктуру для внедрения AI-систем.
-      Капитал превращается в работающий актив и возвращается через реальные контракты.
-    </p>
+    <div class="logo-text">RERAZUM</div>
+    
+    <div class="loading-content">
+      <h3>Основная идея</h3>
+      <p>
+        RERAZUM — это модель инвестиций в вычислительную инфраструктуру для внедрения AI-систем.
+        Капитал превращается в работающий актив и возвращается через реальные контракты.
+      </p>
+      
+      <button class="continue-btn" onclick="scrollToContent()">Продолжить</button>
+      <p class="swipe-hint">или пролистайте вниз</p>
+    </div>
   </div>
 </section>
 
@@ -1340,6 +1457,14 @@
     intro.style.transition = 'opacity 0.6s ease';
     intro.style.opacity = '0';
     setTimeout(() => intro.remove(), 600);
+  }
+
+  // Scroll to content
+  function scrollToContent() {
+    const nextSection = document.querySelector('#loading-section').nextElementSibling;
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   // Toggle theme
