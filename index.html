@@ -257,6 +257,75 @@
       letter-spacing: 0.05em;
     }
 
+    /* Section Navigation */
+    .section-nav {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    body.dark-mode .section-nav {
+      border-top-color: var(--gray-dark);
+    }
+
+    .next-section-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: transparent;
+      color: var(--graphite);
+      border: 2px solid var(--gray-light);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .next-section-btn:hover {
+      background: var(--graphite);
+      color: var(--white);
+      border-color: var(--graphite);
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode .next-section-btn {
+      color: var(--white);
+      border-color: var(--gray-dark);
+    }
+
+    body.dark-mode .next-section-btn:hover {
+      background: var(--white);
+      color: var(--graphite);
+      border-color: var(--white);
+    }
+
+    /* Enhanced section separation */
+    section {
+      position: relative;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: var(--gray-light);
+      opacity: 0.5;
+    }
+
+    body.dark-mode section::before {
+      background: var(--gray-dark);
+    }
+
+    section:first-of-type::before {
+      display: none;
+    }
+
     @keyframes spin {
       from { transform: rotate(0); }
       to { transform: rotate(360deg); }
@@ -1093,7 +1162,7 @@
 </section>
 
 <!-- Почему RERAZUM -->
-<section>
+<section id="why-rerazum">
   <div class="container">
     <h2>Почему RERAZUM</h2>
     <div class="why-grid">
@@ -1112,11 +1181,15 @@
         <p>Модель изначально построена без зависимости от роста оценки</p>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('why-rerazum')">Далее: Контекст рынка →</button>
+    </div>
   </div>
 </section>
 
 <!-- Сравнение с традиционными инструментами -->
-<section>
+<section id="market-context">
   <div class="container">
     <h2>Контекст рынка</h2>
     <p class="section-subtitle">
@@ -1132,29 +1205,24 @@
               <tr>
                 <th>Инструмент</th>
                 <th>Доходность</th>
-                <th>Профиль</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>ОФЗ РФ</td>
                 <td>15-16%</td>
-                <td>Государственный долг</td>
               </tr>
               <tr>
                 <td>Вклад РФ</td>
                 <td>11-15%</td>
-                <td>Банковский продукт</td>
               </tr>
               <tr>
                 <td>US Treasuries</td>
                 <td>4-5%</td>
-                <td>Резервная валюта</td>
               </tr>
               <tr>
                 <td><strong>RERAZUM</strong></td>
                 <td><strong>20-32%</strong></td>
-                <td><strong>Производственный актив</strong></td>
               </tr>
             </tbody>
           </table>
@@ -1195,11 +1263,15 @@
         </p>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('market-context')">Далее: Бизнес-модель →</button>
+    </div>
   </div>
 </section>
 
 <!-- Преимущества бизнес-модели -->
-<section>
+<section id="business-model">
   <div class="container">
     <h2>Преимущества бизнес-модели</h2>
     <p class="section-subtitle">
@@ -1271,11 +1343,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('business-model')">Далее: Параметры финансирования →</button>
+    </div>
   </div>
 </section>
 
 <!-- Параметры -->
-<section>
+<section id="parameters">
   <div class="container">
     <h2>Параметры финансирования</h2>
     
@@ -1309,11 +1385,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('parameters')">Далее: AI-внедрения →</button>
+    </div>
   </div>
 </section>
 
 <!-- Почему AI-внедрения -->
-<section>
+<section id="ai-implementation">
   <div class="container">
     <h2>Почему AI-внедрения сейчас</h2>
     <p class="section-subtitle">
@@ -1343,11 +1423,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('ai-implementation')">Далее: Финансовая модель →</button>
+    </div>
   </div>
 </section>
 
 <!-- Финансовая модель -->
-<section>
+<section id="financial-model">
   <div class="container">
     <h2>Финансовая модель</h2>
     <p class="section-subtitle">
@@ -1386,11 +1470,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('financial-model')">Далее: График выплат →</button>
+    </div>
   </div>
 </section>
 
 <!-- График выплат -->
-<section>
+<section id="payment-schedule">
   <div class="container">
     <h2>График выплат</h2>
     
@@ -1422,11 +1510,15 @@
     <p style="color: var(--gray-medium); font-size: 14px; margin-top: 16px;">
       Квартал 1-8: выплаты по мере контрактов. Досрочный возврат возможен после года, но не гарантирован.
     </p>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('payment-schedule')">Далее: Сценарии →</button>
+    </div>
   </div>
 </section>
 
 <!-- Сценарии -->
-<section>
+<section id="scenarios">
   <div class="container">
     <h2>Сценарии развития</h2>
 
@@ -1468,11 +1560,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('scenarios')">Далее: Фазы развития →</button>
+    </div>
   </div>
 </section>
 
 <!-- Фазы развития -->
-<section>
+<section id="phases">
   <div class="container">
     <h2>Фазы развития</h2>
 
@@ -1523,11 +1619,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('phases')">Далее: Риски →</button>
+    </div>
   </div>
 </section>
 
 <!-- Риски -->
-<section>
+<section id="risks">
   <div class="container">
     <h2>Ключевые риски</h2>
 
@@ -1566,11 +1666,15 @@
     <p style="color: var(--gray-medium); font-size: 14px; margin-top: 24px;">
       AI-рынок будет расти минимум 2 года. GPU используют в майнинге и видеоиграх — это сохраняет стоимость актива.
     </p>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('risks')">Далее: Источники данных →</button>
+    </div>
   </div>
 </section>
 
 <!-- Источники -->
-<section>
+<section id="sources">
   <div class="container">
     <h2>Источники рыночных данных</h2>
 
@@ -1604,6 +1708,10 @@
     <p style="color: var(--gray-medium); font-size: 14px; margin-top: 40px;">
       Прогнозы основаны на открытых отчетах аналитических компаний.
     </p>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('sources')">Связаться с основателем →</button>
+    </div>
   </div>
 </section>
 
@@ -1641,6 +1749,15 @@
     const nextSection = document.querySelector('#loading-section').nextElementSibling;
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Navigate to next section
+  function goToNextSection(currentSectionId) {
+    const currentSection = document.getElementById(currentSectionId);
+    const nextSection = currentSection.nextElementSibling;
+    if (nextSection && nextSection.tagName === 'SECTION') {
+      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
