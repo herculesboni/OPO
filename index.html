@@ -132,19 +132,6 @@
       justify-content: center;
     }
 
-    .logo-section .falling-letters {
-      position: absolute;
-    }
-
-    .logo-section .letter {
-      color: rgba(0, 0, 0, 0.08);
-      text-shadow: none;
-    }
-
-    body.dark-mode .logo-section .letter {
-      color: rgba(255, 255, 255, 0.15);
-    }
-
     .loading-title {
       font-size: clamp(18px, 3vw, 24px);
       font-weight: 300;
@@ -255,6 +242,211 @@
       font-size: 12px;
       opacity: 0.5;
       letter-spacing: 0.05em;
+    }
+
+    /* DNA ANIMATION - 3D спираль */
+    #dna {
+      position: absolute;
+      top: 50%;
+      height: 240px;
+      left: 50%;
+      width: 800px;
+      margin-top: -120px;
+      margin-left: -400px;
+      perspective: 1000px;
+      z-index: 5;
+    }
+
+    #dna div {
+      position: relative;
+      top: 50%;
+      left: 60px;
+      width: 2px;
+      height: 160px;
+      margin-top: -80px;
+      background-color: rgba(255, 255, 255, 0.1);
+      float: left;
+      transform-style: preserve-3d;
+      margin-left: 20px;
+      animation: rotation 4s linear infinite;
+    }
+
+    body.dark-mode #dna div {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    body:not(.dark-mode) #dna div {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    #dna div::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -4px;
+      right: -4px;
+      height: 10px;
+      background-color: white;
+      border-radius: 5px;
+      animation: rotation 4s linear infinite reverse;
+      z-index: 1;
+    }
+
+    body:not(.dark-mode) #dna div::before {
+      background-color: var(--graphite);
+    }
+
+    #dna div::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: -4px;
+      right: -4px;
+      height: 10px;
+      background-color: white;
+      border-radius: 5px;
+      animation: rotation 4s linear infinite reverse;
+      z-index: 1;
+    }
+
+    body:not(.dark-mode) #dna div::after {
+      background-color: var(--graphite);
+    }
+
+    /* DNA animation delays */
+    #dna div:nth-child(1) { animation-delay: -3.5s; }
+    #dna div:nth-child(1)::before, #dna div:nth-child(1)::after { animation-delay: -3.5s; }
+    #dna div:nth-child(2) { animation-delay: -3.35s; }
+    #dna div:nth-child(2)::before, #dna div:nth-child(2)::after { animation-delay: -3.35s; }
+    #dna div:nth-child(3) { animation-delay: -3.2s; }
+    #dna div:nth-child(3)::before, #dna div:nth-child(3)::after { animation-delay: -3.2s; }
+    #dna div:nth-child(4) { animation-delay: -3.05s; }
+    #dna div:nth-child(4)::before, #dna div:nth-child(4)::after { animation-delay: -3.05s; }
+    #dna div:nth-child(5) { animation-delay: -2.9s; }
+    #dna div:nth-child(5)::before, #dna div:nth-child(5)::after { animation-delay: -2.9s; }
+    #dna div:nth-child(6) { animation-delay: -2.75s; }
+    #dna div:nth-child(6)::before, #dna div:nth-child(6)::after { animation-delay: -2.75s; }
+    #dna div:nth-child(7) { animation-delay: -2.6s; }
+    #dna div:nth-child(7)::before, #dna div:nth-child(7)::after { animation-delay: -2.6s; }
+    #dna div:nth-child(8) { animation-delay: -2.45s; }
+    #dna div:nth-child(8)::before, #dna div:nth-child(8)::after { animation-delay: -2.45s; }
+    #dna div:nth-child(9) { animation-delay: -2.3s; }
+    #dna div:nth-child(9)::before, #dna div:nth-child(9)::after { animation-delay: -2.3s; }
+    #dna div:nth-child(10) { animation-delay: -2.15s; }
+    #dna div:nth-child(10)::before, #dna div:nth-child(10)::after { animation-delay: -2.15s; }
+    #dna div:nth-child(11) { animation-delay: -2s; }
+    #dna div:nth-child(11)::before, #dna div:nth-child(11)::after { animation-delay: -2s; }
+    #dna div:nth-child(12) { animation-delay: -1.85s; }
+    #dna div:nth-child(12)::before, #dna div:nth-child(12)::after { animation-delay: -1.85s; }
+    #dna div:nth-child(13) { animation-delay: -1.7s; }
+    #dna div:nth-child(13)::before, #dna div:nth-child(13)::after { animation-delay: -1.7s; }
+    #dna div:nth-child(14) { animation-delay: -1.55s; }
+    #dna div:nth-child(14)::before, #dna div:nth-child(14)::after { animation-delay: -1.55s; }
+    #dna div:nth-child(15) { animation-delay: -1.4s; }
+    #dna div:nth-child(15)::before, #dna div:nth-child(15)::after { animation-delay: -1.4s; }
+    #dna div:nth-child(16) { animation-delay: -1.25s; }
+    #dna div:nth-child(16)::before, #dna div:nth-child(16)::after { animation-delay: -1.25s; }
+    #dna div:nth-child(17) { animation-delay: -1.1s; }
+    #dna div:nth-child(17)::before, #dna div:nth-child(17)::after { animation-delay: -1.1s; }
+    #dna div:nth-child(18) { animation-delay: -0.95s; }
+    #dna div:nth-child(18)::before, #dna div:nth-child(18)::after { animation-delay: -0.95s; }
+    #dna div:nth-child(19) { animation-delay: -0.8s; }
+    #dna div:nth-child(19)::before, #dna div:nth-child(19)::after { animation-delay: -0.8s; }
+    #dna div:nth-child(20) { animation-delay: -0.65s; }
+    #dna div:nth-child(20)::before, #dna div:nth-child(20)::after { animation-delay: -0.65s; }
+    #dna div:nth-child(21) { animation-delay: -0.5s; }
+    #dna div:nth-child(21)::before, #dna div:nth-child(21)::after { animation-delay: -0.5s; }
+    #dna div:nth-child(22) { animation-delay: -0.35s; }
+    #dna div:nth-child(22)::before, #dna div:nth-child(22)::after { animation-delay: -0.35s; }
+    #dna div:nth-child(23) { animation-delay: -0.2s; }
+    #dna div:nth-child(23)::before, #dna div:nth-child(23)::after { animation-delay: -0.2s; }
+    #dna div:nth-child(24) { animation-delay: -0.05s; }
+    #dna div:nth-child(24)::before, #dna div:nth-child(24)::after { animation-delay: -0.05s; }
+    #dna div:nth-child(25) { animation-delay: 0.1s; }
+    #dna div:nth-child(25)::before, #dna div:nth-child(25)::after { animation-delay: 0.1s; }
+    #dna div:nth-child(26) { animation-delay: 0.25s; }
+    #dna div:nth-child(26)::before, #dna div:nth-child(26)::after { animation-delay: 0.25s; }
+    #dna div:nth-child(27) { animation-delay: 0.4s; }
+    #dna div:nth-child(27)::before, #dna div:nth-child(27)::after { animation-delay: 0.4s; }
+    #dna div:nth-child(28) { animation-delay: 0.55s; }
+    #dna div:nth-child(28)::before, #dna div:nth-child(28)::after { animation-delay: 0.55s; }
+    #dna div:nth-child(29) { animation-delay: 0.7s; }
+    #dna div:nth-child(29)::before, #dna div:nth-child(29)::after { animation-delay: 0.7s; }
+    #dna div:nth-child(30) { animation-delay: 0.85s; }
+    #dna div:nth-child(30)::before, #dna div:nth-child(30)::after { animation-delay: 0.85s; }
+
+    @keyframes rotation {
+      from { transform: rotateX(0deg); }
+      to { transform: rotateX(359deg); }
+    }
+
+    /* Section Navigation */
+    .section-nav {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    body.dark-mode .section-nav {
+      border-top-color: var(--gray-dark);
+    }
+
+    .next-section-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: transparent;
+      color: var(--graphite);
+      border: 2px solid var(--gray-light);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .next-section-btn:hover {
+      background: var(--graphite);
+      color: var(--white);
+      border-color: var(--graphite);
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode .next-section-btn {
+      color: var(--white);
+      border-color: var(--gray-dark);
+    }
+
+    body.dark-mode .next-section-btn:hover {
+      background: var(--white);
+      color: var(--graphite);
+      border-color: var(--white);
+    }
+
+    /* Enhanced section separation */
+    section {
+      position: relative;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: var(--gray-light);
+      opacity: 0.5;
+    }
+
+    body.dark-mode section::before {
+      background: var(--gray-dark);
+    }
+
+    section:first-of-type::before {
+      display: none;
     }
 
     @keyframes spin {
@@ -712,76 +904,21 @@
       color: var(--gray-light);
     }
 
-    /* Falling letters animation - Matrix style */
-    .falling-letters {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .letter {
-      position: absolute;
-      top: -100px;
-      font-size: 28px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.6);
-      font-family: 'Courier New', monospace;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      to {
-        top: 120%;
-        opacity: 0;
-      }
-    }
-
-    .letter:nth-child(1) { left: 2%; animation-duration: 8s; animation-delay: 0s; }
-    .letter:nth-child(2) { left: 5%; animation-duration: 10s; animation-delay: 1s; }
-    .letter:nth-child(3) { left: 8%; animation-duration: 7s; animation-delay: 0.5s; }
-    .letter:nth-child(4) { left: 11%; animation-duration: 9s; animation-delay: 2s; }
-    .letter:nth-child(5) { left: 14%; animation-duration: 11s; animation-delay: 0.3s; }
-    .letter:nth-child(6) { left: 17%; animation-duration: 8.5s; animation-delay: 1.5s; }
-    .letter:nth-child(7) { left: 20%; animation-duration: 9.5s; animation-delay: 0.8s; }
-    .letter:nth-child(8) { left: 23%; animation-duration: 10.5s; animation-delay: 2.5s; }
-    .letter:nth-child(9) { left: 26%; animation-duration: 7.5s; animation-delay: 1.2s; }
-    .letter:nth-child(10) { left: 29%; animation-duration: 9s; animation-delay: 0.2s; }
-    .letter:nth-child(11) { left: 32%; animation-duration: 8s; animation-delay: 1.8s; }
-    .letter:nth-child(12) { left: 35%; animation-duration: 10s; animation-delay: 0.6s; }
-    .letter:nth-child(13) { left: 38%; animation-duration: 11s; animation-delay: 2.2s; }
-    .letter:nth-child(14) { left: 41%; animation-duration: 7.5s; animation-delay: 0.9s; }
-    .letter:nth-child(15) { left: 44%; animation-duration: 9.5s; animation-delay: 1.6s; }
-    .letter:nth-child(16) { left: 47%; animation-duration: 8.5s; animation-delay: 0.4s; }
-    .letter:nth-child(17) { left: 50%; animation-duration: 10.5s; animation-delay: 2.3s; }
-    .letter:nth-child(18) { left: 53%; animation-duration: 9s; animation-delay: 1.1s; }
-    .letter:nth-child(19) { left: 56%; animation-duration: 8s; animation-delay: 0.7s; }
-    .letter:nth-child(20) { left: 59%; animation-duration: 11s; animation-delay: 1.9s; }
-    .letter:nth-child(21) { left: 62%; animation-duration: 7.5s; animation-delay: 0.1s; }
-    .letter:nth-child(22) { left: 65%; animation-duration: 9.5s; animation-delay: 1.4s; }
-    .letter:nth-child(23) { left: 68%; animation-duration: 8.5s; animation-delay: 2.1s; }
-    .letter:nth-child(24) { left: 71%; animation-duration: 10s; animation-delay: 0.9s; }
-    .letter:nth-child(25) { left: 74%; animation-duration: 9s; animation-delay: 1.7s; }
-    .letter:nth-child(26) { left: 77%; animation-duration: 8s; animation-delay: 0.3s; }
-    .letter:nth-child(27) { left: 80%; animation-duration: 11s; animation-delay: 2.4s; }
-    .letter:nth-child(28) { left: 83%; animation-duration: 7.5s; animation-delay: 1.3s; }
-    .letter:nth-child(29) { left: 86%; animation-duration: 9.5s; animation-delay: 0.6s; }
-    .letter:nth-child(30) { left: 89%; animation-duration: 10.5s; animation-delay: 2s; }
-    .letter:nth-child(31) { left: 92%; animation-duration: 8.5s; animation-delay: 1s; }
-    .letter:nth-child(32) { left: 95%; animation-duration: 9s; animation-delay: 0.4s; }
-    .letter:nth-child(33) { left: 98%; animation-duration: 11s; animation-delay: 1.5s; }
-    .letter:nth-child(34) { left: 4%; animation-duration: 8s; animation-delay: 2.7s; }
-    .letter:nth-child(35) { left: 12%; animation-duration: 10s; animation-delay: 1.2s; }
-    .letter:nth-child(36) { left: 25%; animation-duration: 7.5s; animation-delay: 0.8s; }
-    .letter:nth-child(37) { left: 43%; animation-duration: 9.5s; animation-delay: 2.6s; }
-    .letter:nth-child(38) { left: 55%; animation-duration: 8.5s; animation-delay: 1.4s; }
-    .letter:nth-child(39) { left: 72%; animation-duration: 10.5s; animation-delay: 0.5s; }
-    .letter:nth-child(40) { left: 88%; animation-duration: 9s; animation-delay: 2.2s; }
-
     /* Responsive */
     @media (max-width: 768px) {
+      #dna {
+        width: 600px;
+        margin-left: -300px;
+        height: 180px;
+        margin-top: -90px;
+      }
+
+      #dna div {
+        height: 120px;
+        margin-top: -60px;
+        margin-left: 10px;
+      }
+
       .logo {
         width: 100px;
         height: 100px;
@@ -827,12 +964,9 @@
         padding: 40px 16px;
       }
 
+      /* УЛУЧШЕНИЕ: меньше букв на планшетах, но распределены равномерно */
       .letter {
-        font-size: 18px !important;
-      }
-
-      .falling-letters .letter:nth-child(n+25) {
-        display: none;
+        font-size: 20px !important;
       }
 
       .loading-title {
@@ -841,6 +975,23 @@
     }
 
     @media (max-width: 480px) {
+      #dna {
+        width: 400px;
+        margin-left: -200px;
+        height: 140px;
+        margin-top: -70px;
+      }
+
+      #dna div {
+        height: 100px;
+        margin-top: -50px;
+        margin-left: 6px;
+      }
+
+      #dna div:nth-child(n+20) {
+        display: none;
+      }
+
       .card {
         padding: 20px;
       }
@@ -865,12 +1016,9 @@
         font-size: 11px;
       }
 
+      /* УЛУЧШЕНИЕ: оставляем 20 букв на мобильных, распределенных равномерно */
       .letter {
-        font-size: 14px !important;
-      }
-
-      .falling-letters .letter:nth-child(n+20) {
-        display: none;
+        font-size: 16px !important;
       }
 
       .continue-btn {
@@ -900,9 +1048,25 @@
       .loading-content p {
         font-size: 14px;
       }
+
+      /* УЛУЧШЕНИЕ: позволяем тексту переноситься на очень маленьких экранах */
+      .video-intro h1 {
+        white-space: normal !important;
+        word-break: keep-all;
+        hyphens: none;
+      }
     }
 
     @media (max-width: 390px) {
+      #dna {
+        width: 320px;
+        margin-left: -160px;
+      }
+
+      #dna div:nth-child(n+15) {
+        display: none;
+      }
+
       .logo {
         width: 70px;
         height: 70px;
@@ -923,6 +1087,24 @@
         font-size: 11px;
         padding: 0 10px;
       }
+
+      /* УЛУЧШЕНИЕ: уменьшаем размер заголовка на интро для маленьких экранов */
+      .video-intro h1 {
+        font-size: clamp(40px, 12vw, 200px) !important;
+        padding: 0 15px;
+      }
+    }
+
+    /* ДОПОЛНИТЕЛЬНОЕ УЛУЧШЕНИЕ: адаптивный grid для очень маленьких экранов */
+    @media (max-width: 350px) {
+      .grid, .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .why-grid {
+        gap: 30px;
+      }
     }
   </style>
 </head>
@@ -934,48 +1116,14 @@
     <source src="opomovie.mp4" type="video/mp4">
   </video>
   
-  <!-- Falling letters - Matrix style -->
-  <div class="falling-letters">
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">A</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
-    <div class="letter">X</div>
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">A</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">X</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
+  <!-- DNA Animation -->
+  <div id="dna">
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
   </div>
   
   <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 0 10px;">
@@ -991,55 +1139,21 @@
 
 <!-- LOGO SCREEN - Album Style Loading -->
 <section class="logo-section" id="loading-section">
-  <!-- Falling letters background -->
-  <div class="falling-letters">
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">A</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
-    <div class="letter">X</div>
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">A</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
-    <div class="letter">R</div>
-    <div class="letter">E</div>
-    <div class="letter">Z</div>
-    <div class="letter">U</div>
-    <div class="letter">M</div>
-    <div class="letter">X</div>
-    <div class="letter">1</div>
-    <div class="letter">0</div>
-    <div class="letter">A</div>
-    <div class="letter">I</div>
+  <!-- DNA Animation Background -->
+  <div id="dna">
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
   </div>
   
   <div style="position: relative; z-index: 10;">
     <p class="loading-title">ПОКА ИДЕТ ЗАГРУЗКА, ДАВАЙТЕ РАССКАЖЕМ ОБ ОСНОВНОЙ ИДЕЕ</p>
     
     <div class="logo">
-      <div class="logo-circle"></div>
+      <img src="logo3.png" alt="RERAZUM Logo" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
     <div class="logo-text">RERAZUM</div>
     
@@ -1056,7 +1170,7 @@
 </section>
 
 <!-- Почему RERAZUM -->
-<section>
+<section id="why-rerazum">
   <div class="container">
     <h2>Почему RERAZUM</h2>
     <div class="why-grid">
@@ -1075,50 +1189,48 @@
         <p>Модель изначально построена без зависимости от роста оценки</p>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('why-rerazum')">Далее: Контекст рынка →</button>
+    </div>
   </div>
 </section>
 
-<!-- Почему не вклады и облигации -->
-<section>
+<!-- Сравнение с традиционными инструментами -->
+<section id="market-context">
   <div class="container">
-    <h2>Почему не вклады и облигации?</h2>
+    <h2>Контекст рынка</h2>
     <p class="section-subtitle">
-      «20% — это мало, лучше в ОФЗ положить» — типичная реакция консервативного инвестора. 
-      Давайте разберём по цифрам.
+      RERAZUM — это не замена традиционным инструментам. Это другой класс актива с иной логикой доходности.
     </p>
 
     <div class="grid-2">
       <div class="card">
-        <h3 class="card-title">Сравнение с безрисковыми активами</h3>
+        <h3 class="card-title">Справочно: традиционные инструменты</h3>
         <div class="card-content">
           <table style="margin: 0;">
             <thead>
               <tr>
                 <th>Инструмент</th>
                 <th>Доходность</th>
-                <th>Риск</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>ОФЗ РФ</td>
                 <td>15-16%</td>
-                <td>Низкий</td>
               </tr>
               <tr>
                 <td>Вклад РФ</td>
-                <td>15-16%</td>
-                <td>Низкий</td>
+                <td>11-15%</td>
               </tr>
               <tr>
                 <td>US Treasuries</td>
                 <td>4-5%</td>
-                <td>Минимальный</td>
               </tr>
               <tr>
                 <td><strong>RERAZUM</strong></td>
                 <td><strong>20-32%</strong></td>
-                <td><strong>Средний</strong></td>
               </tr>
             </tbody>
           </table>
@@ -1126,44 +1238,48 @@
       </div>
 
       <div class="card">
-        <h3 class="card-title">Ключевые отличия</h3>
+        <h3 class="card-title">Структура актива</h3>
         <div class="card-content">
-          <p><strong>1. Реальный upside потенциал</strong></p>
+          <p><strong>Физическое обеспечение</strong></p>
           <p>
-            Вклад даёт 16% и точка. RERAZUM даёт 20% минимум + возможность роста при успешном масштабировании. 
-            Досрочный возврат через 12 месяцев = 32.5% годовых.
+            RTX 5090 сохраняет 70-85% стоимости через 24 месяца. 
+            Ликвидность через майнинг, рендеринг, gaming-рынок.
           </p>
           <div class="divider"></div>
-          <p><strong>2. GPU — это не б/у хлам</strong></p>
+          <p><strong>Денежный поток от контрактов</strong></p>
           <p>
-            RTX 5090 можно продать за 70-85% от первоначальной стоимости даже через 2 года. 
-            Используется в майнинге, видеоиграх, рендеринге. Ликвидность выше облигаций.
+            База возврата — реальные внедрения с фиксированной комиссией. 
+            Upside — при досрочном закрытии или масштабировании клиентской базы.
           </p>
           <div class="divider"></div>
-          <p><strong>3. Кредит — плохая идея</strong></p>
+          <p><strong>Временной горизонт</strong></p>
           <p>
-            «Возьми кредит, продашь железо и закроешь» — логика для проектов без денежного потока. 
-            Здесь модель строится на контрактах, а не на надежде. Кредит под 20%+ убивает маржу.
+            24 месяца — срок под конкретную задачу: выйти на стабильный поток и закрыть обязательства. 
+            Не "вечная" инвестиция, а рабочий инструмент с чёткой логикой.
           </p>
         </div>
       </div>
     </div>
 
     <div class="card" style="margin-top: 40px; background: #FAFAFA;">
-      <h3 class="card-title">Итого</h3>
+      <h3 class="card-title">Позиционирование</h3>
       <div class="card-content">
         <p>
-          Если вас устраивают 15-16% в год без роста — ОФЗ ваш выбор. 
-          Если вы готовы к умеренному риску ради потенциала 20-32% + участия в растущем AI-рынке — 
-          RERAZUM предлагает реальную альтернативу.
+          Мы не конкурируем с ОФЗ. RERAZUM — это прямое финансирование производственного актива 
+          с предсказуемой логикой возврата через контракты. Для тех, кто понимает разницу между 
+          пассивным доходом и участием в работающем бизнесе.
         </p>
       </div>
+    </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('market-context')">Далее: Бизнес-модель →</button>
     </div>
   </div>
 </section>
 
 <!-- Преимущества бизнес-модели -->
-<section>
+<section id="business-model">
   <div class="container">
     <h2>Преимущества бизнес-модели</h2>
     <p class="section-subtitle">
@@ -1235,11 +1351,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('business-model')">Далее: Параметры финансирования →</button>
+    </div>
   </div>
 </section>
 
 <!-- Параметры -->
-<section>
+<section id="parameters">
   <div class="container">
     <h2>Параметры финансирования</h2>
     
@@ -1273,11 +1393,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('parameters')">Далее: AI-внедрения →</button>
+    </div>
   </div>
 </section>
 
 <!-- Почему AI-внедрения -->
-<section>
+<section id="ai-implementation">
   <div class="container">
     <h2>Почему AI-внедрения сейчас</h2>
     <p class="section-subtitle">
@@ -1307,11 +1431,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('ai-implementation')">Далее: Финансовая модель →</button>
+    </div>
   </div>
 </section>
 
 <!-- Финансовая модель -->
-<section>
+<section id="financial-model">
   <div class="container">
     <h2>Финансовая модель</h2>
     <p class="section-subtitle">
@@ -1350,11 +1478,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('financial-model')">Далее: График выплат →</button>
+    </div>
   </div>
 </section>
 
 <!-- График выплат -->
-<section>
+<section id="payment-schedule">
   <div class="container">
     <h2>График выплат</h2>
     
@@ -1386,11 +1518,15 @@
     <p style="color: var(--gray-medium); font-size: 14px; margin-top: 16px;">
       Квартал 1-8: выплаты по мере контрактов. Досрочный возврат возможен после года, но не гарантирован.
     </p>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('payment-schedule')">Далее: Сценарии →</button>
+    </div>
   </div>
 </section>
 
 <!-- Сценарии -->
-<section>
+<section id="scenarios">
   <div class="container">
     <h2>Сценарии развития</h2>
 
@@ -1432,11 +1568,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('scenarios')">Далее: Фазы развития →</button>
+    </div>
   </div>
 </section>
 
 <!-- Фазы развития -->
-<section>
+<section id="phases">
   <div class="container">
     <h2>Фазы развития</h2>
 
@@ -1487,11 +1627,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('phases')">Далее: Риски →</button>
+    </div>
   </div>
 </section>
 
 <!-- Риски -->
-<section>
+<section id="risks">
   <div class="container">
     <h2>Ключевые риски</h2>
 
@@ -1530,11 +1674,15 @@
     <p style="color: var(--gray-medium); font-size: 14px; margin-top: 24px;">
       AI-рынок будет расти минимум 2 года. GPU используют в майнинге и видеоиграх — это сохраняет стоимость актива.
     </p>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('risks')">Далее: Источники данных →</button>
+    </div>
   </div>
 </section>
 
 <!-- Источники -->
-<section>
+<section id="sources">
   <div class="container">
     <h2>Источники рыночных данных</h2>
 
@@ -1568,6 +1716,10 @@
     <p style="color: var(--gray-medium); font-size: 14px; margin-top: 40px;">
       Прогнозы основаны на открытых отчетах аналитических компаний.
     </p>
+    
+    <div class="section-nav">
+      <button class="next-section-btn" onclick="goToNextSection('sources')">Связаться с основателем →</button>
+    </div>
   </div>
 </section>
 
@@ -1594,7 +1746,10 @@
     const intro = document.getElementById('intro');
     intro.style.transition = 'opacity 0.6s ease';
     intro.style.opacity = '0';
-    setTimeout(() => intro.remove(), 600);
+    setTimeout(() => {
+      intro.remove();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 600);
   }
 
   // Scroll to content
@@ -1602,6 +1757,15 @@
     const nextSection = document.querySelector('#loading-section').nextElementSibling;
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Navigate to next section
+  function goToNextSection(currentSectionId) {
+    const currentSection = document.getElementById(currentSectionId);
+    const nextSection = currentSection.nextElementSibling;
+    if (nextSection && nextSection.tagName === 'SECTION') {
+      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
